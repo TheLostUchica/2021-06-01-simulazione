@@ -1,15 +1,14 @@
 package it.polito.tdp.genes.model;
 
-public class Genes {
+public class Genes implements Comparable<Genes>{
 	
 	private String geneId;
 	private String essential;
 	private int chromosome;
 	
-	public Genes(String geneId, String essential, int chromosome) {
+	public Genes(String geneId, int chromosome) {
 		super();
 		this.geneId = geneId;
-		this.essential = essential;
 		this.chromosome = chromosome;
 	}
 
@@ -47,7 +46,13 @@ public class Genes {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		Genes g = (Genes) obj;
+		if(this.getGeneId().compareTo(g.getGeneId())==0){
+			return true;
+		}else {
+			return false;
+		}
+		/*if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
@@ -59,12 +64,17 @@ public class Genes {
 				return false;
 		} else if (!geneId.equals(other.geneId))
 			return false;
-		return true;
+		return true;*/
 	}
 
 	@Override
 	public String toString() {
 		return this.geneId;
+	}
+
+	@Override
+	public int compareTo(Genes o) {
+		return this.getGeneId().compareTo(o.getGeneId());
 	}
 
 
